@@ -1,5 +1,5 @@
 import { useQuery } from "@apollo/client";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   Jumbotron,
   Container,
@@ -7,37 +7,15 @@ import {
   Card,
   Button,
 } from "react-bootstrap";
+import { ME } from "../graphql/queries";
 
-import { getMe, deleteBook } from "../utils/API";
+import { deleteBook } from "../utils/API";
 import Auth from "../utils/auth";
 import { removeBookId } from "../utils/localStorage";
 
-import { ME } from "../graphql/queries";
-
 const SavedBooks = () => {
   const [userData, setUserData] = useState({});
-  const { data, loading, errors } = useQuery(ME);
-
-  // use this to determine if `useEffect()` hook needs to run again
-  const userDataLength = Object.keys(userData).length;
-
-  useEffect(() => {
-    const getUserData = async () => {
-      try {
-        const token = Auth.loggedIn() ? Auth.getToken() : null;
-
-        if (!token) {
-          return false;
-        }
-
-        setUserData(data.me);
-      } catch (err) {
-        console.error(err);
-      }
-    };
-
-    getUserData();
-  }, [userDataLength]);
+  const { data, loading } = useQuery(ME);
 
   // create function that accepts the book's mongo _id value as param and deletes the book from the database
   const handleDeleteBook = async (bookId) => {
@@ -77,14 +55,14 @@ const SavedBooks = () => {
       </Jumbotron>
       <Container>
         <h2>
-          {userData.savedBooks.length
-            ? `Viewing ${userData.savedBooks.length} saved ${
-                userData.savedBooks.length === 1 ? "book" : "books"
+          {data.me.savedBooks.length
+            ? `Viewing ${data.me.savedBooks.length} saved ${
+                data.me.savedBooks.length === 1 ? "book" : "books"
               }:`
             : "You have no saved books!"}
         </h2>
         <CardColumns>
-          {userData.savedBooks.map((book) => {
+          {data.me.savedBooks.map((book) => {
             return (
               <Card key={book.bookId} border="dark">
                 {book.image ? (
