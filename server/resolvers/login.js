@@ -1,5 +1,6 @@
 const { ApolloError } = require("apollo-server");
 const { User } = require("../models");
+const { signToken } = require("../utils/auth");
 
 const login = async (_, { input }) => {
   const user = await User.findOne({
