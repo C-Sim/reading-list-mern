@@ -10,9 +10,11 @@ Allows the user to search books and save them to a personalised reading list.
 
 - React
 - MongoDB
+- MongoDB Atlas
 - Mongoose ODM
 - GraphQL
 - Node
+- Heroku
 
 ## Screenshots
 
