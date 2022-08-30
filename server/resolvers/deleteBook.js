@@ -8,7 +8,7 @@ const deleteBook = async (_, { bookId }, { user }) => {
     { new: true }
   );
   if (!updatedUser) {
-    return ApolloError("Couldn't find user with this id!");
+    return new ApolloError("Couldn't find user with this id!");
   }
   return updatedUser;
 };

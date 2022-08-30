@@ -8,9 +8,10 @@ const saveBook = async (_, { input }, { user }) => {
       { $addToSet: { savedBooks: input } },
       { new: true, runValidators: true }
     );
+
     return updatedUser;
   } catch (err) {
-    return ApolloError("Failed to save book");
+    return new ApolloError("Failed to save book");
   }
 };
 

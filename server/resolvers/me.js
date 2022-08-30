@@ -7,7 +7,7 @@ const me = async (_, args, { user }) => {
   });
 
   if (!foundUser) {
-    return ApolloError("Cannot find a user with this id!");
+    return new ApolloError("Cannot find a user with this id!");
   }
 
   return foundUser;
