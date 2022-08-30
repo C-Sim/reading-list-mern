@@ -11,7 +11,7 @@ const saveBook = async (_, { input }, { user }) => {
 
     return updatedUser;
   } catch (err) {
-    return new ApolloError("Failed to save book");
+    return ApolloError("Failed to save book");
   }
 };
 

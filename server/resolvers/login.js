@@ -6,6 +6,7 @@ const login = async (_, { input }) => {
   const user = await User.findOne({
     $or: [{ username: input.username }, { email: input.email }],
   });
+
   if (!user) {
     return new ApolloError("Can't find this user");
   }
@@ -15,7 +16,9 @@ const login = async (_, { input }) => {
   if (!correctPw) {
     return new ApolloError("Wrong password!");
   }
+
   const token = signToken(user);
+
   return { token, user };
 };
 

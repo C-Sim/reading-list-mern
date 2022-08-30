@@ -2,7 +2,7 @@ const me = require("./me");
 const signup = require("./signup");
 const login = require("./login");
 const saveBook = require("./saveBook");
-const deleteBook = require("./deleteBook");
+const removeBook = require("./removeBook");
 
 const resolvers = {
   Query: {
@@ -12,7 +12,7 @@ const resolvers = {
     signup,
     login,
     saveBook,
-    deleteBook,
+    removeBook,
   },
 };
 
