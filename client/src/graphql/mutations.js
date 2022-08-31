@@ -9,9 +9,49 @@ export const LOGIN = gql`
 `;
 
 export const SIGNUP = gql`
-  mutation Mutation($input: SignupInput!) {
+  mutation Mutation($input: SignUpInput!) {
     signup(input: $input) {
       token
+    }
+  }
+`;
+
+export const SAVE_BOOK = gql`
+  mutation Mutation($input: SaveBookInput!) {
+    saveBook(input: $input) {
+      id
+      username
+      email
+      password
+      bookCount
+      savedBooks {
+        authors
+        description
+        bookId
+        image
+        link
+        title
+      }
+    }
+  }
+`;
+
+export const REMOVE_BOOK = gql`
+  mutation Mutation($bookId: String!) {
+    removeBook(bookId: $bookId) {
+      id
+      username
+      email
+      password
+      bookCount
+      savedBooks {
+        authors
+        description
+        bookId
+        image
+        link
+        title
+      }
     }
   }
 `;

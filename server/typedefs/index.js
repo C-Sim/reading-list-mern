@@ -38,9 +38,9 @@ const typeDefs = gql`
   input SaveBookInput {
     bookId: String!
     authors: [String]
-    description: String
     image: String
-    title: String!
+    title: String
+    description: String
     link: String
   }
 
@@ -52,7 +52,7 @@ const typeDefs = gql`
     signup(input: SignUpInput!): AuthResponse
     login(input: LoginInput!): AuthResponse
     saveBook(input: SaveBookInput!): User
-    deleteBook(bookId: String!): User
+    removeBook(bookId: String!): User
   }
 `;
 
