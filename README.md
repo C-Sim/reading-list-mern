@@ -4,7 +4,7 @@ Google Books API search engine built with a GraphQL API built with Apollo Server
 
 Allows the user to search books and save them to a personalised reading list.
 
-[Deployed URL](https://ancient-beach-04265.herokuapp.com/)
+[Deployed URL](https://mysterious-refuge-63370.herokuapp.com/)
 
 ## Technologies
 
